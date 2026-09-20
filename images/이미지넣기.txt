@@ -1,0 +1,6 @@
+이 폴더에 다음 이름으로 게임 이미지를 넣어주세요.
+maplestory.jpg
+dnf.jpg
+overwatch.jpg
+
+가로형 이미지(예: 900 x 500px 정도)를 사용하면 잘 맞습니다.

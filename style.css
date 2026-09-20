@@ -1,0 +1,414 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, "Malgun Gothic", sans-serif;
+  background-color: #21125b;
+  color: white;
+}
+
+/* =========================
+   메인 화면
+   ========================= */
+
+.main-screen {
+  min-height: 100vh;
+  position: relative;
+
+  background-image: url("./images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+.dark-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to right,
+    rgba(19, 8, 65, 0.25),
+    rgba(19, 8, 65, 0.05),
+    rgba(19, 8, 65, 0.35)
+  );
+}
+
+.menu {
+  width: 430px;
+  max-width: 90%;
+  min-height: 100vh;
+
+  margin: 0 auto;
+  padding-top: 65px;
+
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+/* 제목 */
+.title-box {
+  margin-bottom: 35px;
+  padding: 18px 25px;
+
+  border: 3px solid rgba(255, 255, 255, 0.75);
+  border-radius: 18px;
+
+  background: rgba(35, 16, 90, 0.72);
+  box-shadow:
+    0 0 0 4px rgba(52, 18, 117, 0.5),
+    0 8px 25px rgba(0, 0, 0, 0.3);
+
+  backdrop-filter: blur(4px);
+}
+
+.title-box p {
+  margin: 0 0 4px;
+
+  font-size: 14px;
+  letter-spacing: 5px;
+  font-weight: bold;
+  color: #ffd85a;
+}
+
+.title-box h1 {
+  margin: 0;
+
+  font-size: 38px;
+  letter-spacing: 2px;
+
+  color: white;
+
+  text-shadow:
+    3px 3px 0 #6928a5,
+    0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* 게임 버튼 */
+.game-button {
+  width: 360px;
+  max-width: 100%;
+
+  margin: 20px auto;
+  padding: 15px 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+
+  color: white;
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 0 rgba(30, 9, 72, 0.7),
+    0 12px 25px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s,
+    filter 0.15s;
+}
+
+.maple-button {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 100, 176, 0.92),
+    rgba(124, 44, 218, 0.92)
+  );
+}
+
+.dnf-button {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 166, 70, 0.92),
+    rgba(218, 47, 121, 0.92)
+  );
+}
+
+.overwatch-button {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 197, 255, 0.92),
+    rgba(66, 66, 183, 0.92)
+  );
+}
+
+.game-button:hover {
+  transform: translateY(-5px) scale(1.03);
+
+  box-shadow:
+    0 10px 0 rgba(30, 9, 72, 0.7),
+    0 18px 30px rgba(0, 0, 0, 0.4);
+
+  filter: brightness(1.15);
+}
+
+.game-button:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 3px 0 rgba(30, 9, 72, 0.7),
+    0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-small {
+  margin-bottom: 3px;
+
+  font-size: 12px;
+  letter-spacing: 4px;
+
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.button-title {
+  font-size: 27px;
+  font-weight: bold;
+
+  text-shadow: 2px 3px 0 rgba(54, 17, 96, 0.7);
+}
+
+.guide-text {
+  margin-top: 32px;
+
+  font-size: 13px;
+  letter-spacing: 4px;
+  font-weight: bold;
+
+  color: #fff;
+  text-shadow: 2px 2px 4px #351078;
+}
+
+
+/* =========================
+   게임 상세 화면
+   ========================= */
+
+.game-screen {
+  display: none;
+
+  min-height: 100vh;
+  padding: 45px 20px;
+
+  background-image:
+    linear-gradient(
+      rgba(25, 9, 70, 0.72),
+      rgba(25, 9, 70, 0.82)
+    ),
+    url("./images/background.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.detail-box {
+  max-width: 850px;
+  margin: 0 auto;
+
+  position: relative;
+
+  padding: 30px;
+
+  border: 3px solid rgba(255, 255, 255, 0.75);
+  border-radius: 20px;
+
+  background: rgba(40, 17, 91, 0.88);
+
+  box-shadow:
+    0 0 0 5px rgba(78, 24, 140, 0.55),
+    0 15px 40px rgba(0, 0, 0, 0.5);
+
+  backdrop-filter: blur(5px);
+}
+
+/* X 버튼 */
+.close-button {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+
+  width: 40px;
+  height: 40px;
+
+  border: 2px solid white;
+  border-radius: 50%;
+
+  background: rgba(25, 10, 65, 0.8);
+
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #e94fa5;
+}
+
+/* 상세 제목 */
+.detail-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.detail-title span {
+  color: #ffd85a;
+  font-size: 13px;
+  letter-spacing: 4px;
+  font-weight: bold;
+}
+
+.detail-title h2 {
+  margin: 5px 0 0;
+
+  font-size: 36px;
+
+  text-shadow:
+    3px 3px 0 #6825a1,
+    0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* 게임 이미지 */
+.game-image {
+  width: 100%;
+  height: 380px;
+
+  overflow: hidden;
+
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+
+  background-color: #160d35;
+}
+
+.game-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+/* 설명 */
+.text-box {
+  margin-top: 25px;
+  padding: 20px 25px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  color: #35214f;
+}
+
+.text-box h3 {
+  margin: 0 0 8px;
+
+  color: #7d2ba9;
+}
+
+.text-box h3:not(:first-child) {
+  margin-top: 20px;
+}
+
+.text-box p {
+  margin: 0;
+
+  line-height: 1.7;
+}
+
+/* 하단 버튼 */
+.button-area {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.link-button,
+.back-button {
+  display: inline-block;
+
+  margin: 5px;
+  padding: 13px 24px;
+
+  border: 2px solid white;
+  border-radius: 10px;
+
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  background: linear-gradient(
+    #a849d0,
+    #64219b
+  );
+
+  box-shadow:
+    0 4px 0 #32105c,
+    0 7px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-button {
+  background: linear-gradient(
+    #626bbd,
+    #363b83
+  );
+}
+
+.link-button:hover,
+.back-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+
+/* =========================
+   작은 화면
+   ========================= */
+
+@media (max-width: 600px) {
+
+  .menu {
+    padding-top: 35px;
+  }
+
+  .title-box h1 {
+    font-size: 28px;
+  }
+
+  .game-button {
+    width: 300px;
+  }
+
+  .button-title {
+    font-size: 22px;
+  }
+
+  .detail-box {
+    padding: 20px;
+  }
+
+  .detail-title h2 {
+    font-size: 28px;
+  }
+
+  .game-image {
+    height: 230px;
+  }
+}
